@@ -830,7 +830,7 @@
                 <tr>
                     <td>
                         <div class="dropdown">
-                            <label for="board-config-device-name">Device Name</label>
+                            <label for="board-config-device-name">BMS Name</label>
                             <div class="dropdown-content">
                                 The Name displayed in the bluetooth connection dialog.
                             </div>
@@ -842,7 +842,8 @@
                 <tr>
                     <td>
                         <div class="dropdown">
-                            <label>Enabled Inputs:</label>
+                            <label>Enabled Inputs:ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</label>
+
                             <div class="dropdown-content">
                                 Which Inputs should are enabled - only these Inputs have the protection features and will turn on
                             </div>
@@ -878,7 +879,7 @@
                         <option value="li-po">Li-Po</option>              <!-- umin 2.8v umax 4.2v -->
                         <option value="li-fe-po">LiFePo</option>          <!-- umin 2.5v umax 3.5v -->
                         <option value="custom-li" selected>Custom Lithium</option> <!-- umin and umax choosable -->
-                        <option id="fully-custom-chemistry-option" value="custom">Completely Custom</option> <!-- no cell number -->
+                        <option id="fully-custom-chemistry-option" value="custom">Custom Voltages</option> <!-- no cell number -->
                     </select></td>
                 </tr>
 
@@ -911,7 +912,7 @@
                 <tr>
                     <td class="battery-field cell-field">
                         <div class="dropdown">
-                            <label for="max-cell-voltage">Maximal cell voltage [mV]:</label>
+                            <label for="max-cell-voltage">Max. cell voltage [mV]:</label>
                             <div class="dropdown-content">
                                 The cell voltage at which an over voltage protection event is fired.
                             </div>
@@ -924,7 +925,7 @@
                 <tr>
                     <td class="battery-field cell-field">
                         <div class="dropdown">
-                            <label for="min-cell-voltage">Minimal cell voltage [mV]:</label>
+                            <label for="min-cell-voltage">Min. cell voltage [mV]:</label>
                             <div class="dropdown-content">
                                 The cell voltage at which an under voltage protection event is fired.
                             </div>
@@ -964,7 +965,7 @@
 
                     <td>
                         <div class="dropdown">
-                            <label for="strand-max-current">Strand max discharge current [A]:</label>
+                            <label for="strand-max-current">Discharge per Input [A]:</label>
                             <div class="dropdown-content">
                                 Max output (discharge) current of a single connected channel -
                                 if you want 300A combined output current and have all 3 channels enabled, this should be 100A
@@ -978,7 +979,7 @@
                 <tr>
                     <td>
                         <div class="dropdown">
-                            <label for="strand-max-reverse-current">Strand max charge current [A]:</label>
+                            <label for="strand-max-reverse-current">Charge per Input [A]:</label>
                             <div class="dropdown-content">
                                 Max input (charge) current of a single connected channel -
                                 if you want 99A combined charging current and have all 3 channels enabled, this should be 33A
@@ -991,7 +992,7 @@
                 <tr>
                     <td>
                         <div class="dropdown">
-                            <label for="strand-max-imbalance-current">Strand max imbalance current [A]:</label>
+                            <label for="strand-max-imbalance-current">Current imbalance [A]:</label>
                             <div class="dropdown-content">
                                 The difference in current that can flow between the batteries which will trigger a protection event.
                                 With identical battery packs this current may be caused by different wire lengths or different stages of degradation inside the battery.
@@ -1026,11 +1027,11 @@
                 <tr>
                     <td>
                         <div class="dropdown">
-                            <label for="load-capacitance">Load Capacitance [10uF]:</label>
+                            <label for="load-capacitance">Detect Capacitive Loads:</label>
                             <div class="dropdown-content">
-                                The load capacitance value is the input capacitance on your load's power connection. The
-                                value is used to estimate weather the right load or even any load is connected.
-                                If this setting is grossly wrong, it may lead to faults "nothing connected" faults.
+                                Please put 1 to only "Switch ON" Capacitive Loads and 0 otherwise
+                                Higher Values then 1 are also possible = [10uF] * Value but untested.
+                                If this setting is wrong, it may lead to faults "nothing connected" faults.
                             </div>
                         </div>
                     </td>
@@ -1041,7 +1042,7 @@
                 <tr>
                     <td>
                         <div class="dropdown">
-                            <label for="logic-max-temp">Extern max temperature [°C]:</label>
+                            <label for="logic-max-temp">Extern max temp [°C]:</label>
                             <!--div class="dropdown-content">
                                 The precharge transistor regulated the current needed to charge the output capacitance (motor controllers, etc.).
                                 Per physics, this transistor dissipates the same energy that the capacitors are charged with, which
@@ -1058,7 +1059,7 @@
                 <tr>
                     <td>
                         <div class="dropdown">
-                            <label for="power-max-temp">Board max temperature [°C]:</label>
+                            <label for="power-max-temp">Board max temp [°C]:</label>
                             <div class="dropdown-content">
                                 The shunt temperature is a good representation of how warm the power stage of the VoltaicBMS is.
                                 You may set the temperature as you like if you need this BMS to be below a certain temperature
@@ -1070,14 +1071,7 @@
                     <td><input id="power-max-temp" type="number" min="40" max="90"></td>
                 </tr>
 
-                <tr>
-                    <td>
-                        <label for="datalogging-update-frequency">Data logging update Frequency [Hz]:</label>
-                    </td>
-                    <td>
-                        <input id="datalogging-update-frequency" type="number" min="1" max="120">
-                    </td>
-                </tr>
+
 
                 <!--
                 <tr><td></td><td></td><td class="separator"></td><td></td><td></td></tr>
@@ -1108,7 +1102,7 @@
                 <tr>
                     <td>
                         <div class="dropdown">
-                            <label for="bms-config-auto-power-off">Auto power off time [minutes]:</label>
+                            <label for="bms-config-auto-power-off">Auto power off [min]:</label>
                             <div class="dropdown-content">
                                 Idle time before BMS automatically turns off. Idle is defined as either not in operation mode or
                                 <0.5A current drawn from each battery. Resets every time idle state is left.
@@ -1117,7 +1111,14 @@
                     </td>
                     <td><input id="bms-config-auto-power-off" type="number"></td>
                 </tr>
-
+                <tr>
+                    <td>
+                        <label for="datalogging-update-frequency">Data Frequency [Hz]:</label>
+                    </td>
+                    <td>
+                        <input id="datalogging-update-frequency" type="number" min="1" max="120">
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         <div class="dropdown">
@@ -1587,7 +1588,7 @@
 
         <div class="decription-container">
             <p>
-                VoltaicBMS Interface is a App for use with the VoltaicBMS and VoltaicTacho.
+                This App is for use with the VoltaicBMS and VoltaicTacho.
             </p>
 
             <p>
@@ -1792,14 +1793,11 @@
 
             <p>
                 Note: If you have any problems or want to make a suggestion, feel free to contact us!
-                <br>
-                <br>
-                You can reach us via: info@voltaic.de or WhatsApp/Phone : +49 170 5731608
+                You can reach us via: info@voltaic.de or WhatsApp / Phone : +49 170 5731608
             </p>
 
             <p>
                 If you want to contact the Lead Developer of this PWA or if you are interested in
-                <br>
                 development or discussing technical topics send me an E-Mail! : hi@p3h3.de
             </p>
 
