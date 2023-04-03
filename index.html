@@ -775,8 +775,8 @@
 
 
 
-
-    <div id="swipe-for-settings-container" class="touch">
+    <!-- temporary display-none class -->
+    <div id="swipe-for-settings-container" class="touch display-none">
         <div class="swipe-for-settings-text snap-align">
             <h4 class="touchUI">Swipe up for settings!</h4>
             <h4 class="non-touchUI">Double click for settings!</h4>
@@ -801,15 +801,17 @@
         <a id="firmwareUpdateText" class="hidden"></a>
 
         <p>Serial Number: <a class="bms-serial-number-field"></a></p>
+
+
+        <div class="hide-setting-button">
+            Hide Setting
+        </div>
     </div>
 
 
 
 
-
-    <div id="settings-container" class="hidden">
-
-        <div id="board-configuration-div">
+        <div id="board-configuration-div" class="hidden">
             <div class="frame">
                 <img class="logo" src="img/icon/512x512.png" alt="voltaic logo">
             </div>
@@ -1142,6 +1144,12 @@
             </div>
 
 
+
+            <div class="hide-setting-button">
+                Hide Setting
+            </div>
+
+
         </div>
 
 
@@ -1166,7 +1174,7 @@
 
 
 
-        <div id="inline-configuration-div">
+        <div id="inline-configuration-div" class="hidden">
 
             <h2>Tacho Configuration:</h2>
 
@@ -1307,8 +1315,11 @@
                     <td><button id="resetVehicleOdo">Set to 0.0km</button></td>
                 </tr>
             </table>
+
+            <div class="hide-setting-button">
+                Hide Setting
+            </div>
         </div>
-    </div>
 
 
     <div id="board-calibration-div" class="hidden">
@@ -1574,6 +1585,11 @@
             <button id="board-config-open-json">Open Config JSON</button>
             <button id="board-config-save-json">Save Config as JSON</button>
         </div>
+
+
+        <div class="hide-setting-button">
+            Hide Setting
+        </div>
     </div>
 
 
@@ -1802,6 +1818,10 @@
             </p>
 
 
+        </div>
+
+        <div class="hide-setting-button">
+            Hide Setting
         </div>
     </div>
 
@@ -2032,15 +2052,13 @@
 <script src="js/helpers/wakelock.js"></script>
 <script src="js/captureMode.js"></script>
 
-
-<script src="js/tilebar.js"></script>
-<script src="js/settings_detection.js"></script>
-<script src="js/settings/interface-config.js"></script>
-
 <script src="js/rearrange.js"></script>
 <script src="js/connection_gui.js"></script>
 <script src="js/gauges.js"></script>
 
+<script src="js/tilebar.js"></script>
+<script src="js/settings_detection.js"></script>
+<script src="js/settings/interface-config.js"></script>
 
 <script src="js/settings/board-config.js"></script>
 <script src="js/settings/tacho-config.js"></script>
