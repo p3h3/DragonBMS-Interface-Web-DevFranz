@@ -1,0 +1,30 @@
+/*!
+ * 
+ *   simple-keyboard v3.6.8
+ *   https://github.com/hodgef/simple-keyboard
+ *
+ *   Copyright (c) Francisco Hodge (https://github.com/hodgef) and project contributors.
+ *
+ *   This source code is licensed under the MIT license found in the
+ *   LICENSE file in the root directory of this source tree.
+ *
+ */
+
+/*!
+ * zoom.js 0.3
+ * http://lab.hakim.se/zoom-js
+ * MIT licensed
+ *
+ * Copyright (C) 2011-2014 Hakim El Hattab, http://hakim.se
+ * modified by p3h3 in 2022-2023
+ */
+
+/**
+ * SVGInject - Version 1.2.3
+ * A tiny, intuitive, robust, caching solution for injecting SVG files inline into the DOM.
+ *
+ * https://github.com/iconfu/svg-inject
+ *
+ * Copyright (c) 2018 INCORS, the creators of iconfu.com
+ * @license MIT License - https://github.com/iconfu/svg-inject/blob/master/LICENSE
+ */
