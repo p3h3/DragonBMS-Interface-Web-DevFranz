@@ -491,3 +491,8 @@ Channel control button (inside the above mentioned table)
 .device-info-device-not-chosen{
     opacity: 0.5;
 }
+
+
+.quickstart-guide-container h4{
+    text-align: left;
+}

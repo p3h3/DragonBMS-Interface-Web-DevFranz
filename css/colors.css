@@ -47,7 +47,7 @@ td.main-table-td-4row {
 
 #nothingConnectedOverlay{
     background-color: var(--nothing-connected-overlay-background-color);
-    text-shadow: 2px 2px var(--accent-color);
+    text-shadow: 1px 1px var(--accent-color);
 }
 
 #nothingConnectedOverlay div:first-of-type div{
