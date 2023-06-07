@@ -24,6 +24,9 @@
     <link rel="stylesheet" href="css/tables.css">
     <link rel="stylesheet" href="css/dynamic-style.css">
 
+
+    <link rel="stylesheet" href="css/vehicle-model.css">
+
     <link rel="icon" type="image/x-icon" href="img/icon/512x512.png">
 
 
@@ -62,7 +65,7 @@
         <div class="dropdown">
             <span>Settings</span>
             <div class="dropdown-content">
-                <a id="tileBarBoardInfo">Board Info</a>
+                <a id="tileBarBoardInfo">Device Info</a>
                 <br>
                 <a id="tileBarBoardConfig">BMS Configuration</a>
                 <br>
@@ -116,7 +119,6 @@
     </div>
 
 </div>
-
 
 <div id="nothingConnectedOverlay" class="">
     <div id="autoConnectContainer">
@@ -669,20 +671,161 @@
 
 
         <tr>
-            <td class="main-table-td-2row board-element"></td>
 
 
 
-            <!--
+        <!--
 
-            they need to absolutely empty!
-            for the rearrange logic to allow placing the dev field here
+        they need to absolutely empty!
+        for the rearrange logic to allow placing the dev field here
 
-            -->
+        -->
 
-            <td class="main-table-td-2row board-element"></td>
+        <td class="main-table-td-2row">
+
+            <div class="gauge-div vehicle-model">
+
+                <div class="vehicle-model-container">
+                    <!-- SVG injection makes the tag styleable since it's an inline SVG object-->
+                    <img src="./img/gokart_wireframe.svg" class="vehicle-model-image"/>
+
+                </div>
+
+                <table class="vehicle-model-table">
+                    <tr>
+                        <td>
+                            <input id="reverse-fl" type="checkbox">
+                        </td>
+                        <td>
+                            <div class="vehicle-model-torque">
+                                <div class="vehicle-model-torque-positive vehicle-model-torque-fl"></div>
+                                <div class="vehicle-model-torque-negative vehicle-model-torque-fl"></div>
+                            </div>
+                        </td>
+
+
+                        <!-- inverted order here because css spec is weird
+                        - float right elements are in inverse order -->
+                        <td>
+                            <input id="reverse-fr" type="checkbox">
+                        </td>
+                        <td>
+                            <div class="vehicle-model-torque">
+                                <div class="vehicle-model-torque-positive vehicle-model-torque-fr"></div>
+                                <div class="vehicle-model-torque-negative vehicle-model-torque-fr"></div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input id="reverse-rr" type="checkbox">
+                        </td>
+                        <td>
+                            <div class="vehicle-model-torque">
+                                <div class="vehicle-model-torque-positive vehicle-model-torque-rr"></div>
+                                <div class="vehicle-model-torque-negative vehicle-model-torque-rr"></div>
+                            </div>
+                        </td>
+
+                        <!-- inverted order here because css spec is weird
+                        - float right elements are in inverse order -->
+                        <td>
+                            <input id="reverse-rl" type="checkbox">
+                        </td>
+                        <td>
+                            <div class="vehicle-model-torque">
+                                <div class="vehicle-model-torque-positive vehicle-model-torque-rl"></div>
+                                <div class="vehicle-model-torque-negative vehicle-model-torque-rl"></div>
+                            </div>
+                        </td>
+                    </tr>
+
+                </table>
+
+
+            </div>
+
+
+        </td>
+
+
+            <td class="main-table-td-2row can-bridge-element" id="can-tx-gauge">
+                <div class="gauge-div">
+
+                    <table class="table-4fields">
+                        <tr>
+                            <td class="can-input-td"><label for="can-tx-extended-id-checkbox" class="can-input" >Extended ID:</label></td>
+                            <td class="can-input-td"><input type="checkbox" class="can-input" id="can-tx-extended-id-checkbox"></td>
+                        </tr>
+                        <tr>
+                            <td class="can-input-td"><label for="can-tx-id" class="can-input" >ID (dec):</label></td>
+                            <td class="can-input-td"><input type="number" class="can-input" id="can-tx-id" value="0"></td>
+                        </tr>
+                        <tr>
+                            <td class="can-input-td"><label for="can-tx-data0" class="can-input" >D0:</label></td>
+                            <td class="can-input-td"><input type="number" class="can-input" id="can-tx-data0" value="-1"></td>
+                        </tr>
+                        <tr>
+                            <td class="can-input-td"><label for="can-tx-data1" class="can-input" >D1:</label></td>
+                            <td class="can-input-td"><input type="number" class="can-input" id="can-tx-data1" value="-1"></td>
+                        </tr>
+                        <!--
+                        <tr>
+                            <td class="can-input-td"><label for="can-tx-data2" class="can-input" >D2:</label></td>
+                            <td class="can-input-td"><input type="number" class="can-input" id="can-tx-data2" value="-1"></td>
+                        </tr>
+                        <tr>
+                            <td class="can-input-td"><label for="can-tx-data3" class="can-input" >D3:</label></td>
+                            <td class="can-input-td"><input type="number" class="can-input" id="can-tx-data3" value="-1"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="can-input-td"><label for="can-tx-data4" class="can-input" >D4:</label></td>
+                            <td class="can-input-td"><input type="number" class="can-input" id="can-tx-data4" value="-1"></td>
+                        </tr>
+                        <tr>
+                            <td class="can-input-td"><label for="can-tx-data5" class="can-input" >D5:</label></td>
+                            <td class="can-input-td"><input type="number" class="can-input" id="can-tx-data5" value="-1"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="can-input-td"><label for="can-tx-data6" class="can-input" >D6:</label></td>
+                            <td class="can-input-td"><input type="number" class="can-input" id="can-tx-data6" value="-1"></td>
+                        </tr>
+                        <tr>
+                            <td class="can-input-td"><label for="can-tx-data7" class="can-input" >D7:</label></td>
+                            <td class="can-input-td"><input type="number" class="can-input" id="can-tx-data7" value="-1"></td>
+                        </tr>
+                        -->
+                        <tr>
+                            <td class="can-input-td"><label for="can-tx-send-button" class="can-input" >Send!</label></td>
+                            <td class="can-input-td"><input type="button" class="can-input" id="can-tx-send-button"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="can-input-td"><label for="can-rx-extended-id-checkbox" class="can-input" >Extended ID:</label></td>
+                            <td class="can-input-td"><input type="checkbox" class="can-input" id="can-rx-extended-id-checkbox"></td>
+                        </tr>
+                        <tr>
+                            <td class="can-input-td"><label for="can-rx-id" class="can-input" >ID (dec):</label></td>
+                            <td class="can-input-td"><input type="number" class="can-input" id="can-rx-id" value="0"></td>
+                        </tr>
+                        <tr>
+                            <td class="can-input-td"><label for="can-rx-send-button" class="can-input" >Send!</label></td>
+                            <td class="can-input-td"><input type="button" class="can-input" id="can-rx-send-button"></td>
+                        </tr>
+                    </table>
+
+
+                    <p id="can-rx-pfusch-box">
+
+                </div>
+
+            </td>
 
         </tr>
+
     </table>
 
 
@@ -808,18 +951,40 @@
 
 
     <div id="board-info-container" class="hidden">
-        <h2>VoltaicBMS Interface</h2>
 
-        <p>Model: <a class="bms-model-field"></a></p>
+        <h2>Device Info :</h2>
 
-        <p>Hardware Version: <a class="bms-hardware-version-field"></a></p>
+        <div class="device-info-device-chooser">
+            <!-- FRANZ NICHT UMBENENNEN, SONST GEHT OTA KAPUTT!!!!!!!! -->
+            <h2 class="device-info-device-not-chosen" value="bms">BMS</h2>
+            <!-- WIRKLICH NICHT! -->
+            <h2 class="device-info-device-not-chosen" value="tacho">Tacho</h2>
+        </div>
+        <h4>Model: <a class="bms-model-field"></a></h4>
+        <h4>Hardware Version: <a class="bms-hardware-version-field"></a></h4>
+        <h4>Firmware Version: <a class="bms-firmware-version-field"></a></h4>
+        <h4>Serial Number: <a class="bms-serial-number-field"></a></h4>
+        <h4 id="firmwareUpdateText" class="hidden"></h4>
 
-        <p>Firmware Version: <a class="bms-firmware-version-field"></a></p>
+        <br>
+        <br>
 
-        <a id="firmwareUpdateText" class="hidden"></a>
+        <h2>Voltaic OTA Update</h2>
 
-        <p>Serial Number: <a class="bms-serial-number-field"></a></p>
+        <br>
 
+        <h3>Available images :</h3>
+        <div id="available-ota-images-div">
+            <select id="available-ota-images">
+                <option>Choose firmware version</option>
+            </select>
+        </div>
+        <br>
+        <a id="otaUpdateInfoText"><br></a>
+        <br>
+        <div>
+            <button id="ota-update-button" type="submit" class="btn btn-info" disabled>Update Firmware</button>
+        </div>
 
         <div class="hide-setting-button">
             Close this Window
@@ -2055,45 +2220,7 @@
 </div>
 
 
-<script src="js/libraries/coloris.js"></script>
-<script src="js/libraries/simplekeyboard.js"></script>
-
-<script src="js/helpers/small_functions.js"></script>
-
-<script src="js/serviceworker/sw_init.js"></script>
-
-<script src="js/dom_element_init.js"></script>
-<script src="js/helpers/color_mode.js"></script>
-<script src="js/helpers/configcalib_processing.js"></script>
-<script src="js/helpers/zoom.js"></script>
-<script src="js/helpers/fileaccess.js"></script>
-<script src="js/helpers/wakelock.js"></script>
-<script src="js/captureMode.js"></script>
-
-<script src="js/rearrange.js"></script>
-<script src="js/connection_gui.js"></script>
-<script src="js/gauges.js"></script>
-
-<script src="js/tilebar.js"></script>
-<script src="js/settings_detection.js"></script>
-<script src="js/settings/interface-config.js"></script>
-
-<script src="js/settings/board-config.js"></script>
-<script src="js/settings/tacho-config.js"></script>
-<script src="js/settings/board-calib.js"></script>
-<script src="js/settings/virtualkeyboard.js"></script>
-<script src="js/settings/export_import.js"></script>
-
-<script src="js/dataProcessing/bms_gathering.js"></script>
-<script src="js/dataProcessing/tacho_gathering.js"></script>
-<script src="js/dataProcessing/bms_processing.js"></script>
-<script src="js/dataProcessing/tacho_processing.js"></script>
-<script src="js/dataProcessing/datalogging.js"></script>
-
-<script src="js/ble/bms.js"></script>
-<script src="js/ble/tacho.js"></script>
-
-<script src="js/ble/overlay_watchdog.js"></script>
+<script src="dist/main.js"></script>
 
 
 

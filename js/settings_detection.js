@@ -1,1 +1,0 @@
-function hideAllSettings(){boardCalibContainer.classList.add("hidden"),boardConfigContainer.classList.add("hidden"),inlineConfigContainer.classList.add("hidden"),boardInfoContainer.classList.add("hidden"),interfaceSettingsContainer.classList.add("hidden")}for(let i of hideSettingButtons)i.addEventListener("click",()=>{table.scrollIntoView({behavior:"smooth"}),hideAllSettings()});
