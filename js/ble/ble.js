@@ -1,0 +1,1 @@
+let bleConnectionStates={disconnected:"disconnected",searching:"searching",connecting:"connecting",connected:"connected"};export default bleConnectionStates;

@@ -1,0 +1,1 @@
+const path=require("path"),TerserPlugin=require("terser-webpack-plugin"),entriesList=["./js/entry.js"];module.exports={entry:entriesList,output:{filename:"main.js",path:path.resolve(__dirname,"dist")},mode:"development",optimization:{minimize:!1,minimizer:[new TerserPlugin({terserOptions:{parse:{},compress:{},mangle:!0,module:!1,ie8:!1,keep_classnames:!1,keep_fnames:!1}})]}};
