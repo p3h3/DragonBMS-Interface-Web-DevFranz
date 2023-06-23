@@ -127,7 +127,7 @@ The "Connect BMS" Overlay still has opacity 1
     pointer-events: none;
 }
 
-.hidden{
+.visibility-hidden{
     visibility: hidden;
 }
 

@@ -121,16 +121,16 @@
 }
 
 
-#board-info-container{
+#device-info-container{
     text-align: center;
     width: 90vw;
     margin: 20vh auto auto;
 }
-#board-info-container .logo{
+#device-info-container .logo{
     height: 10vw;
     width: 10vw;
 }
-#board-info-container a{
+#device-info-container a{
     display: inline;
 }
 

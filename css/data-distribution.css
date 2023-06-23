@@ -1,0 +1,123 @@
+#data-distribution {
+    text-align: center;
+
+    width: 90vw;
+    height: calc(100vh - 50px);
+    margin: auto;
+
+    background: var(--background-color);
+}
+
+#data-distribution-container {
+    text-align: center;
+    width: 100%;
+    height: calc(100% - 9vh);
+
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+}
+
+
+#data-distribution-mapping-table{
+    width: 65%;
+    height: 100%;
+
+    border-left: dotted 1px var(--main-table-grid-color);
+
+    display: block;
+    text-align: center;
+}
+
+#data-distribution-mapping-table td {
+    width: 50%;
+}
+
+#data-distribution-inputs-table td {
+    width: 50%;
+}
+
+
+#data-distribution-mapping-table td p{
+    font-size: 1.5vw;
+    padding: 0;
+
+    margin-top: 0;
+    margin-bottom: 0;
+
+    border: dotted 1px var(--main-table-grid-color);
+}
+
+#data-distribution-mapping-table th p{
+    font-size: 2.5vw;
+    padding: 0;
+
+    margin-top: 0;
+    margin-bottom: 1vw;
+
+    border-bottom: dotted 2px var(--main-table-grid-color);
+}
+
+
+
+
+#data-distribution-inputs-table{
+    width: 35%;
+    height: 100%;
+
+    border-left: dotted 1px var(--main-table-grid-color);
+
+    display: block;
+    text-align: center;
+}
+
+#data-distribution-inputs-table td p{
+    font-size: 1.5vw;
+    padding: 0;
+
+    margin-top: 0;
+    margin-bottom: 0;
+
+    border: dotted 1px var(--main-table-grid-color);
+}
+
+#data-distribution-inputs-table th p{
+    font-size: 2.5vw;
+    padding: 0;
+
+    margin-top: 0;
+    margin-bottom: 1vw;
+
+    border-bottom: dotted 2px var(--main-table-grid-color);
+}
+
+
+
+
+
+
+
+
+
+.blend-in-background-accent{
+    animation: blend-in-background 0.1s forwards;
+}
+@keyframes blend-in-background {
+    0% {
+        background: var(--background-color);
+    }
+    100% {
+        background: var(--accent-color);
+    }
+}
+.blend-out-background-accent{
+    animation: blend-out-background 0.1s;
+}
+@keyframes blend-out-background {
+    0% {
+        background: var(--accent-color);
+    }
+    100% {
+        background: var(--background-color);
+    }
+}
