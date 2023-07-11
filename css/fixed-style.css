@@ -301,6 +301,27 @@ for the "connect last inline" overlay button
 }
 
 
+
+/*
+for the ota update overlay
+(to make it almost im possible for the user to fuck up ota)
+ */
+#otaUpdateOverlay{
+    text-align: center;
+
+
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+    z-index: 10;
+}
+
+
+
 /*
 for the "connect last BMS" overlay button
  */

@@ -16,6 +16,8 @@ const appShellFiles = [
     "css/settings.css",
     "css/colors.css",
     "css/tables.css",
+    "css/data-distribution.css",
+    "css/file-managers.css",
     "css/libraries/coloris.css",
     "css/libraries/simplekeyboard.css",
     "dist/main.js",
@@ -52,6 +54,11 @@ self.addEventListener("install", (e) => {
 self.addEventListener("fetch", (e) => {
     e.respondWith(
         (async () => {
+            // do not cache any requests for firmware versions but actually fetch them every time
+            if(e.request.url.includes("api.codetabs.com/v1/proxy")){
+                return await fetch(e.request);
+            }
+
             const r = await caches.match(e.request);
             if(serviceWorkerDebug){
                 console.log(`[Service Worker] Fetching resource: ${e.request.url}`);
@@ -72,7 +79,7 @@ self.addEventListener("fetch", (e) => {
 
 
 
-// event is fired with activation of the serviceworker
+// the event is fired with activation of the serviceworker
 self.addEventListener("activate", async () => {
     // claim control over all the existing clients (windows that are open during the update)
     await self.clients.claim();

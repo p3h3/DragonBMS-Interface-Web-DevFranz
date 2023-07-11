@@ -29,6 +29,8 @@
 
     <link rel="stylesheet" href="css/data-distribution.css">
 
+    <link rel="stylesheet" href="css/file-managers.css">
+
     <link rel="icon" type="image/x-icon" href="img/icon/512x512.png">
 
 
@@ -62,6 +64,12 @@
                 <p id="tileBarConnectTacho">Connect Tacho</p>
                 <br>
                 <p id="tileBarDisconnect">Disconnect All Devices</p>
+                <div id="tileBarDataFileManagerContainer" class="display-none">
+                    <br>
+                    <p id="tileBarDBCManager">DBC Manager</p>
+                    <br>
+                    <p id="tileBarPluginManager">Plugin Manager</p>
+                </div>
             </div>
         </div>
         <div class="dropdown">
@@ -71,11 +79,15 @@
                 <br>
                 <a id="tileBarBoardConfig">BMS Configuration</a>
                 <br>
-                <a id="tileBarBoardCalib">BMS Calibration</a>
-                <br>
                 <a id="tileBarTachoConfig">Tacho Configuration</a>
-                <br>
-                <a id="tileBarDataDistribution" class="display-none">Data Distribution</a>
+                <div id="tileBarBMSCalibContainer" class="display-none">
+                    <br>
+                    <a id="tileBarBoardCalib">BMS Calibration</a>
+                </div>
+                <div id="tileBarDataDistributionContainer" class="display-none">
+                    <br>
+                    <a id="tileBarDataDistribution">Data Distribution</a>
+                </div>
                 <a id="settings-hide" class="display-none">
                     <br>
                     Close this Window
@@ -154,6 +166,14 @@
             <h4> - WhatsApp Support +49 170 5731608</h4>
 
         </div>
+    </div>
+</div>
+
+
+<div id="otaUpdateOverlay" class="visibility-hidden">
+    <div id="otaUpdateOverlayContainer">
+            <h2 class="ota-update-text">Performing<br>
+                Update...</h2>
     </div>
 </div>
 
@@ -707,6 +727,23 @@
 
         </tr>
 
+        <tr class="dev-mode-tiles display-none">
+
+            <!--
+
+            they need to absolutely empty!
+            for the rearrange logic to allow placing the dev field here
+
+            -->
+            <td class="main-table-td-2row">
+            </td>
+
+
+            <td class="main-table-td-2row">
+            </td>
+
+        </tr>
+
     </table>
 
 
@@ -861,7 +898,7 @@
             </select>
         </div>
         <br>
-        <a id="otaUpdateInfoText"><br></a>
+        <a id="otaUpdateInfoText" class="display-none"><br></a>
         <br>
         <div>
             <button id="ota-update-button" type="submit" class="btn btn-info" disabled>Update Firmware</button>
@@ -973,7 +1010,7 @@
                             </div>
                         </div>
                     </td>
-                    <td><input id="battery-capacity" type="number" min="1"></td>
+                    <td><input id="battery-capacity" type="number" min="100" max="3200000"></td>
                 </tr>
 
                 <tr>
@@ -1251,6 +1288,17 @@
                 <button id="inline-config-write">Write</button>
             </div>
             <table id="inline-configuration-table">
+                <tr>
+                    <td>
+                        <div class="dropdown">
+                            <label for="tacho-config-device-name">Tacho Name</label>
+                            <div class="dropdown-content">
+                                The Name displayed in the Bluetooth connection dialog.
+                            </div>
+                        </div>
+                    </td>
+                    <td><input id="tacho-config-device-name" type="text" class="tacho-name-field"></td>
+                </tr>
                 <tr>
                     <td>
                         <label for="ntc-type-select">Sensor Type:</label>
@@ -1686,6 +1734,57 @@
                 </tr>
 
             </table>
+        </div>
+
+        <div class="hide-setting-button">
+            Close this Window
+        </div>
+    </div>
+
+
+
+
+    <div id="dbcFileManager" class="display-none">
+        <div id="dbc-file-manager-container">
+            <table id="dbc-file-manager-table">
+                <tr>
+                    <th>
+                        <p>File Name</p>
+                    </th>
+                    <th>
+                        <p>Size</p>
+                    </th>
+                    <th>
+                        <p>Actions</p>
+                    </th>
+                </tr>
+            </table>
+
+            <button id="dbc-file-manager-add-file">Add new File</button>
+        </div>
+
+        <div class="hide-setting-button">
+            Close this Window
+        </div>
+    </div>
+
+    <div id="pluginFileManager" class="display-none">
+        <div id="plugin-file-manager-container">
+            <table id="plugin-file-manager-table">
+                <tr>
+                    <th>
+                        <p>File Name</p>
+                    </th>
+                    <th>
+                        <p>Size</p>
+                    </th>
+                    <th>
+                        <p>Actions</p>
+                    </th>
+                </tr>
+            </table>
+
+            <button id="plugin-file-manager-add-file">Add new File</button>
         </div>
 
         <div class="hide-setting-button">
@@ -2218,6 +2317,77 @@
                 </div>
             </td>
 
+
+            <td class="main-table-td-2row" id="tacho-temp-settings-gauge">
+                <div class="gauge-div">
+
+                    <table class="table-4fields">
+                        <tr>
+                            <td class="tacho-temp-td"><label for="tacho-motor-temp-c" class="can-input" >Motor Cutoff:</label></td>
+                            <td class="tacho-temp-td"><input type="number" class="can-input" id="tacho-motor-temp-c" min="0" value="-1"></td>
+                        </tr>
+                        <tr>
+                            <td class="tacho-temp-td"><label for="tacho-motor-temp-l1" class="can-input" >Motor Limp 1:</label></td>
+                            <td class="tacho-temp-td"><input type="number" class="can-input" id="tacho-motor-temp-l1" min="0" value="-1"></td>
+                        </tr>
+                        <tr>
+                            <td class="tacho-temp-td"><label for="tacho-motor-temp-l2" class="can-input" >Motor Limp 2:</label></td>
+                            <td class="tacho-temp-td"><input type="number" class="can-input" id="tacho-motor-temp-l2" min="0" value="-1"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="tacho-temp-td"><label for="tacho-controller-temp-c" class="can-input" >controller Cutoff:</label></td>
+                            <td class="tacho-temp-td"><input type="number" class="can-input" id="tacho-controller-temp-c" min="0" value="-1"></td>
+                        </tr>
+                        <tr>
+                            <td class="tacho-temp-td"><label for="tacho-controller-temp-l1" class="can-input" >controller Limp 1:</label></td>
+                            <td class="tacho-temp-td"><input type="number" class="can-input" id="tacho-controller-temp-l1" min="0" value="-1"></td>
+                        </tr>
+                        <tr>
+                            <td class="tacho-temp-td"><label for="tacho-controller-temp-l2" class="can-input" >controller Limp 2:</label></td>
+                            <td class="tacho-temp-td"><input type="number" class="can-input" id="tacho-controller-temp-l2" min="0" value="-1"></td>
+                        </tr>
+                        <tr>
+                            <td class="tacho-temp-td"><label for="tacho-extern-temp-c" class="can-input" >extern Cutoff:</label></td>
+                            <td class="tacho-temp-td"><input type="number" class="can-input" id="tacho-extern-temp-c" min="0" value="-1"></td>
+                        </tr>
+                        <tr>
+                            <td class="tacho-temp-td"><label for="tacho-extern-temp-l1" class="can-input" >extern Limp 1:</label></td>
+                            <td class="tacho-temp-td"><input type="number" class="can-input" id="tacho-extern-temp-l1" min="0" value="-1"></td>
+                        </tr>
+                        <tr>
+                            <td class="tacho-temp-td"><label for="tacho-extern-temp-l2" class="can-input" >extern Limp 2:</label></td>
+                            <td class="tacho-temp-td"><input type="number" class="can-input" id="tacho-extern-temp-l2" min="0" value="-1"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="tacho-temp-td"><label for="tacho-exp1" class="can-input" >experimental 1:</label></td>
+                            <td class="tacho-temp-td"><input type="number" class="can-input" id="tacho-exp1" min="0" value="-1"></td>
+                        </tr>
+                        <tr>
+                            <td class="tacho-temp-td"><label for="tacho-exp2" class="can-input" >experimental 2:</label></td>
+                            <td class="tacho-temp-td"><input type="number" class="can-input" id="tacho-exp2" min="0" value="-1"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="tacho-temp-td"><label for="tacho-ext-temp-protection" class="can-input" >black line, ext protection:</label></td>
+                            <td class="tacho-temp-td">
+                                <input type="checkbox" class="can-input" id="tacho-temp-protection" min="0" value="-1">
+                                <input type="checkbox" class="can-input" id="tacho-ext-temp-protection" min="0" value="-1">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tacho-temp-td"><label for="tacho-exp1-checkbox" class="can-input" >exp checkbox 1,2:</label></td>
+                            <td class="tacho-temp-td">
+                                <input type="checkbox" class="can-input" id="tacho-exp1-checkbox" min="0" value="-1">
+                                <input type="checkbox" class="can-input" id="tacho-exp2-checkbox" min="0" value="-1">
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+            </td>
+
         </table>
 
 
@@ -2282,7 +2452,6 @@
     </div>
 
 </div>
-
 
 <script src="dist/main.js"></script>
 

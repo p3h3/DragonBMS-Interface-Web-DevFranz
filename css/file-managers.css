@@ -1,0 +1,121 @@
+#dbcFileManager {
+    text-align: center;
+
+    width: 90vw;
+    height: calc(100vh - 50px);
+    margin: auto;
+
+    background: var(--background-color);
+}
+
+#dbc-file-manager-container {
+    text-align: center;
+    width: 100%;
+    height: calc(100% - 9vh);
+
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+}
+
+
+#dbc-file-manager-table{
+    width: 65%;
+    height: 100%;
+
+    border-left: dotted 1px var(--main-table-grid-color);
+
+    display: block;
+    text-align: center;
+}
+
+#dbc-file-manager-table td {
+    width: 50%;
+}
+
+
+#dbc-file-manager-table td p{
+    font-size: 1.5vw;
+    padding: 0;
+
+    margin-top: 0;
+    margin-bottom: 0;
+
+    border: dotted 1px var(--main-table-grid-color);
+}
+
+#dbc-file-manager-table th p{
+    font-size: 2.5vw;
+    padding: 0;
+
+    margin-top: 0;
+    margin-bottom: 1vw;
+
+    border-bottom: dotted 2px var(--main-table-grid-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+#pluginFileManager {
+    text-align: center;
+
+    width: 90vw;
+    height: calc(100vh - 50px);
+    margin: auto;
+
+    background: var(--background-color);
+}
+
+#plugin-file-manager-container {
+    text-align: center;
+    width: 100%;
+    height: calc(100% - 9vh);
+
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+}
+
+
+#plugin-file-manager-table{
+    width: 65%;
+    height: 100%;
+
+    border-left: dotted 1px var(--main-table-grid-color);
+
+    display: block;
+    text-align: center;
+}
+
+#plugin-file-manager-table td {
+    width: 50%;
+}
+
+
+#plugin-file-manager-table td p{
+    font-size: 1.5vw;
+    padding: 0;
+
+    margin-top: 0;
+    margin-bottom: 0;
+
+    border: dotted 1px var(--main-table-grid-color);
+}
+
+#plugin-file-manager-table th p{
+    font-size: 2.5vw;
+    padding: 0;
+
+    margin-top: 0;
+    margin-bottom: 1vw;
+
+    border-bottom: dotted 2px var(--main-table-grid-color);
+}

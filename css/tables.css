@@ -154,3 +154,18 @@ no right border for all the rightmost tds in a table-4fields
 table.table-3-channel-controls td:last-of-type{
     border-right: none;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+.tacho-temp-td{
+    line-height: 0.4em;
+}
